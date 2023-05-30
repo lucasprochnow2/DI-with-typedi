@@ -29,6 +29,8 @@
     }
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "reflect-metadata": "^0.1.13",
+    "typedi": "^0.10.0"
   }
 }
