@@ -1,7 +1,19 @@
 import { Application } from 'express';
+import { Container, Service } from 'typedi';
 
 import userRoutes from './user/routes';
 
-export default function initializeRestRouters(app: Application) {
-  app.use('/user', userRoutes);
+@Service()
+class RestRouters {
+  app: Application;
+
+  constructor() {
+    this.app = Container.get('expressServer');
+  }
+
+  initialize() {
+    this.app.use('/user', userRoutes);
+  }
 }
+
+export default RestRouters;

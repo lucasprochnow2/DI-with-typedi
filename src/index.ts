@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import express, { Application } from 'express';
 import bodyParser from 'body-parser';
+import { Container } from 'typedi';
 
-import initializeRestRouters from './routes';
+import RestRouters from './routes';
 
 const app: Application = express();
 const PORT = 3000;
@@ -10,7 +11,10 @@ const PORT = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-initializeRestRouters(app);
+Container.set('expressServer', app);
+
+const restRouters = Container.get(RestRouters);
+restRouters.initialize();
 
 try {
   app.listen(PORT, (): void => {
