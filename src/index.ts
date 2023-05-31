@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import express, { Application } from 'express';
 import bodyParser from 'body-parser';
 
-import initializeRestRouters from './routes'
+import initializeRestRouters from './routes';
 
 const app: Application = express();
 const PORT = 3000;
