@@ -1,6 +1,6 @@
 import { Service } from 'typedi';
 
-type User = {
+export type User = {
   name: string;
   motherName: string;
 };
