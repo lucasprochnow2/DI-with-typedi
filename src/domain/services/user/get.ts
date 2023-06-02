@@ -1,10 +1,13 @@
-import { Service } from 'typedi';
+import { Inject, Service } from 'typedi';
 
-import UserRepository from '../../repositories/user';
+import UserRepository, { IUserRepository } from '../../repositories/user';
 
 @Service()
 class GetUser {
-  constructor(public userRepository: UserRepository) {}
+  constructor(
+    @Inject(() => UserRepository)
+    public userRepository: IUserRepository,
+  ) {}
 
   public get() {
     return this.userRepository.get();
